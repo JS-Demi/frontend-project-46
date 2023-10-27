@@ -6,13 +6,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: clone
+        uses: actions/checkout@v3
       
-      - uses: actions/setup-node@v3
-      
-      - run: npm install
-      
-      - run: make lint
+      - name: setup node
+        uses: actions/setup-node@v3
+
+      - name: install
+        run: npm install
+
+      - name: lint
+        run: make lint
       
       - name: run tests
         run: npx jest
