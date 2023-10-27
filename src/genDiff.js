@@ -2,10 +2,11 @@
 import _ from 'lodash';
 import readFile from './utilites/readFile.js';
 
+const obj = {};
+
 const genDiff = (file1, file2) => {
   const contentFile1 = readFile(file1);
   const contentFile2 = readFile(file2);
-  const obj = {};
   const keys1 = Object.keys(contentFile1);
   const keys2 = Object.keys(contentFile2);
   const keys = _.uniq([...keys1, ...keys2]).sort();
@@ -26,10 +27,8 @@ const genDiff = (file1, file2) => {
     if (!keys1.includes(element)) {
       obj[add] = contentFile2[element];
     }
-    return obj;
   });
-  const string = JSON.stringify(obj, null, ' ');
-  const clearString = string.replaceAll('"', '').replaceAll(',', '');
+  const clearString = JSON.stringify(obj, null, ' ').replaceAll('"', '').replaceAll(',', '');
   return clearString;
 };
 
