@@ -1,11 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 import _ from 'lodash';
 import readFile from './utilites/readFile.js';
+import { getPathToFixtures } from './utilites/getPathToFile.js';
 
-const genDiff = (file1, file2) => {
+const genDiff = (filepath1, filepath2) => {
   const obj = {};
-  const contentFile1 = readFile(file1);
-  const contentFile2 = readFile(file2);
+  const contentFile1 = readFile(filepath1);
+  const contentFile2 = readFile(filepath2);
   const keys1 = Object.keys(contentFile1);
   const keys2 = Object.keys(contentFile2);
   const keys = _.uniq([...keys1, ...keys2]).sort();
@@ -28,5 +29,7 @@ const genDiff = (file1, file2) => {
   });
   return JSON.stringify(obj, null, ' ').replaceAll('"', '').replaceAll(',', '');
 };
-
+const fle1 = getPathToFixtures('testFile1.json');
+const fle2 = getPathToFixtures('testFile2.json');
+console.log(genDiff(fle1, fle2));
 export default genDiff;
