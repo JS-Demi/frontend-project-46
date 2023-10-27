@@ -43,4 +43,18 @@ jobs:
           runs-on: ubuntu-latest
 
           steps:
-          -nam
+          - name: checkout code
+          uses: actions/checkout@v3
+          
+          - name: lint files
+          run: make lint
+
+          tests:
+          needs: lint
+          runs-on: ubuntu_latest
+
+           steps:
+          - name: Checkout code
+          uses: actions/checkout@v3
+          - name: run tests
+          run: npx jest
