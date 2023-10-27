@@ -4,14 +4,14 @@ publish:
 gendiff:
 	node bin/jsonDiffProgram.js	
 
-install-deps:
+install:
 	npm ci
 
 test:
 	npm test
 
 test-coverage:
-	npm test -- --coverage --coverageProvider=v8
+	npm test -- --coverage
 
 lint:
 	npx eslint .
