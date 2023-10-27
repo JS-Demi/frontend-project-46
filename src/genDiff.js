@@ -2,9 +2,8 @@
 import _ from 'lodash';
 import readFile from './utilites/readFile.js';
 
-const obj = {};
-
 const genDiff = (file1, file2) => {
+  const obj = {};
   const contentFile1 = readFile(file1);
   const contentFile2 = readFile(file2);
   const keys1 = Object.keys(contentFile1);
@@ -27,9 +26,9 @@ const genDiff = (file1, file2) => {
     if (!keys1.includes(element)) {
       obj[add] = contentFile2[element];
     }
+    return obj;
   });
-  const clearString = JSON.stringify(obj, null, ' ').replaceAll('"', '').replaceAll(',', '');
-  return clearString;
+  return JSON.stringify(obj, null, ' ').replaceAll('"', '').replaceAll(',', '');
 };
 
 export default genDiff;
