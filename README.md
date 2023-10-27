@@ -4,3 +4,7 @@
 ## Пример работы пакета:
 
 [![asciicast](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW.svg)](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW)
+
+## Пример работы пакеты с разными форматами файлов:
+
+[![asciicast](https://asciinema.org/a/qQpMXbekdnSD9nugQY2hGFeti.svg)](https://asciinema.org/a/qQpMXbekdnSD9nugQY2hGFeti)
