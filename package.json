@@ -21,7 +21,8 @@
   "type": "module",
   "homepage": "https://github.com/JS-Demi/frontend-project-46#readme",
   "dependencies": {
-    "commander": "^11.1.0"
+    "commander": "^11.1.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^8.51.0",
