@@ -21,13 +21,13 @@ const diff = {
   "+ work": "Hexlet",
 };
 
-const string = JSON.stringify(diff, null, ' ').replaceAll('"', '').replaceAll(',', '');
+const result = JSON.stringify(diff, null, ' ').replaceAll('"', '').replaceAll(',', '');
 
 test('genDiff.js', () => {
   const filepath1 = getPathToFixtures('testFile1.json');
   const filepath2 = getPathToFixtures('testFile2.json');
   const differ = genDiff(filepath1, filepath2);
-  expect(differ).toBe(string);
+  expect(differ).toBe(result);
 });
 
 test('getPathTofile.js', () => {
@@ -37,6 +37,9 @@ test('getPathTofile.js', () => {
   expect(getPathToSrc('file1.json')).toBe(pathToSrc);
 });
 
-test('yaml files', () => {
-  const   
-})
+test('genDiff.js yaml files', () => {
+  const filepath1 = getPathToFixtures('testFile3.yaml');
+  const filepath2 = getPathToFixtures('testFile4.yml');
+  const difference = genDiff(filepath1, filepath2);
+  expect(difference).toBe(result);
+});
