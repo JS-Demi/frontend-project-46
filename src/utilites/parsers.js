@@ -1,6 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import yaml from 'js-yaml';
 
-const jsonParse = (filepath) => JSON.parse(filepath);
-
-
-export default parsed;
+export const jsonParse = (file) => JSON.parse(file);
+export const yamlParse = (file) => yaml.load(file);
