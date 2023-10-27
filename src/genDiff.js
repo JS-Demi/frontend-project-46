@@ -19,9 +19,7 @@ const genDiff = (file1, file2) => {
       if (contentFile1[element] !== contentFile2[element]) {
         obj[remove] = contentFile1[element];
         obj[add] = contentFile2[element];
-      } else {
-        obj[element] = contentFile2[element];
-      }
+      } else obj[element] = contentFile2[element];
     }
     if (!keys1.includes(element)) {
       obj[add] = contentFile2[element];
