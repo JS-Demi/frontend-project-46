@@ -1,5 +1,5 @@
 import fs from 'fs';
-import parseFile from './dataParse.js';
+import parseFile from './parsers.js';
 
 const readFile = (pathfile) => {
   const fileContent = fs.readFileSync(pathfile, { encoding: 'utf8' });

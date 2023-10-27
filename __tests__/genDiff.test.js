@@ -36,3 +36,7 @@ test('getPathTofile.js', () => {
   expect(getPathToFixtures('testFile1.json')).toBe(pathToFixtures);
   expect(getPathToSrc('file1.json')).toBe(pathToSrc);
 });
+
+test('yaml files', () => {
+  const   
+})
