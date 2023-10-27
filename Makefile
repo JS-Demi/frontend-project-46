@@ -4,7 +4,7 @@ publish:
 gendiff:
 	node bin/jsonDiffProgram.js	
 
-install-deps:
+install:
 	npm ci
 
 test:
