@@ -1,8 +1,13 @@
 /* eslint-disable quotes */
 /* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
+import path from 'path';
+import { fileURLToPath } from 'url';
 import genDiff from '../index.js';
 import { getPathToFixtures, getPathToSrc } from '../src/utilites/getPathToFile.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const diff = {
   "- age": 27,
@@ -26,8 +31,8 @@ test('genDiff.js', () => {
 });
 
 test('getPathTofile.js', () => {
-  const pathToFixtures = '/Users/dmitrij/projects/frontend-project-46/__fixtures__/testFile1.json';
-  const pathToSrc = '/Users/dmitrij/projects/frontend-project-46/src/file1.json';
+  const pathToFixtures = path.join(__dirname, '..', '__fixtures__', 'testFile1.json');
+  const pathToSrc = path.join(__dirname, '..', 'src', 'file1.json');
   expect(getPathToFixtures('testFile1.json')).toBe(pathToFixtures);
   expect(getPathToSrc('file1.json')).toBe(pathToSrc);
 });
