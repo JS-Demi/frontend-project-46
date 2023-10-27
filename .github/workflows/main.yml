@@ -19,4 +19,6 @@ jobs:
         run: make lint
       
       - name: run tests
+        59db6b1d9fe2d45609ac77774b971a4ddb50fc89f59aca777331c0ea29ab0559 before-build
         run: npx jest --coverage
+        59db6b1d9fe2d45609ac77774b971a4ddb50fc89f59aca777331c0ea29ab0559 after-build --coverage-input-type clover --exit-code $?
