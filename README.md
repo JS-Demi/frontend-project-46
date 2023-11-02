@@ -5,6 +5,10 @@
 
 [![asciicast](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW.svg)](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW)
 
-## Пример работы пакеты с разными форматами файлов:
+## Пример работы пакета с разными форматами файлов:
 
 [![asciicast](https://asciinema.org/a/qQpMXbekdnSD9nugQY2hGFeti.svg)](https://asciinema.org/a/qQpMXbekdnSD9nugQY2hGFeti)
+
+## Пример работы пакета с разными форматами вложенных файлов:
+
+[![asciicast](https://asciinema.org/a/0V1fyvWR7lDX3wiLbrujg5jIu.svg)](https://asciinema.org/a/0V1fyvWR7lDX3wiLbrujg5jIu)
