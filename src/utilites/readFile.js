@@ -15,5 +15,4 @@ const readFile = (filepath) => {
   }
   return parsed;
 };
-
 export default readFile;
