@@ -12,3 +12,7 @@
 ## Пример работы пакета с разными форматами вложенных файлов:
 
 [![asciicast](https://asciinema.org/a/0V1fyvWR7lDX3wiLbrujg5jIu.svg)](https://asciinema.org/a/0V1fyvWR7lDX3wiLbrujg5jIu)
+
+## Пример работы пакета с другим форматтером:
+
+[![asciicast](https://asciinema.org/a/3ALpKXyeAWr7XSNSppxfOyu02.svg)](https://asciinema.org/a/3ALpKXyeAWr7XSNSppxfOyu02)
