@@ -54,13 +54,13 @@ const diff = {
   },
 };
 
-const result = JSON.stringify(diff, null, ' ').replaceAll('"', '').replaceAll(',', '');
+const expectedStylishFormat = JSON.stringify(diff, null, ' ').replaceAll('"', '').replaceAll(',', '');
 
 test('genDiff.js', () => {
   const filepath1 = getPathToFixtures('testFile1.json');
   const filepath2 = getPathToFixtures('testFile2.json');
   const difference = genDiff(filepath1, filepath2);
-  expect(difference).toBe(result);
+  expect(difference).toBe(expectedStylishFormat);
 });
 
 test('getPathTofile.js', () => {
@@ -76,8 +76,8 @@ test('genDiff.js yaml files', () => {
   const filepath3 = getPathToFixtures('testFile4.yml');
   const checkDifference1 = genDiff(filepath1, filepath2);
   const checkDifference2 = genDiff(filepath3, filepath2);
-  expect(checkDifference1).toBe(result);
-  expect(checkDifference2).toBe(result);
+  expect(checkDifference1).toBe(expectedStylishFormat);
+  expect(checkDifference2).toBe(expectedStylishFormat);
 });
 
 // test('unknwon format genDiff.js', () => {
@@ -86,3 +86,23 @@ test('genDiff.js yaml files', () => {
 //   const difference = genDiff(filepath1, filepath2, 'json');
 //   expect(difference).toThrow('Неправильно выбран формат');
 // });
+
+const expectedPlainFormat = [
+  `Property 'common.follow' was added with value: false`,
+  `Property 'common.setting2' was removed`,
+  `Property 'common.setting3' was updated. From true to null`,
+  `Property 'common.setting4' was added with value: 'blah blah'`,
+  `Property 'common.setting5' was added with value: [complex value]`,
+  `Property 'common.setting6.doge.wow' was updated. From '' to 'so much'`,
+  `Property 'common.setting6.ops' was added with value: 'vops'`,
+  `Property 'group1.baz' was updated. From 'bas' to 'bars'`,
+  `Property 'group1.nest' was updated. From [complex value] to 'str'`,
+  `Property 'group2' was removed`,
+  `Property 'group3' was added with value: [complex value]`,
+];
+
+test('genDiff.js plain format', () => {
+  const filepath1 = getPathToFixtures('testFile1.json');
+  const filepath2 = getPathToFixtures('testFile2.json');
+  expect(genDiff(filepath1, filepath2, 'plain')).toBe(expectedPlainFormat.join('\n'));
+});
