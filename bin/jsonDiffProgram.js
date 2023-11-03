@@ -14,9 +14,10 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((file1, file2) => {
+    const options = program.opts();
     const filepath1 = getPathToSrc(file1);
     const filepath2 = getPathToSrc(file2);
-    console.log(genDiff(filepath1, filepath2));
+    console.log(genDiff(filepath1, filepath2, options.format));
   });
 
 program.parse();
