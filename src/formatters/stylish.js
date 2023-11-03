@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import sort from '../utilites/sort.js';
 
-const formatText = (text, replacer = ' ', spaceCount = 1) => {
+const formatterStylish = (data, replacer = ' ', spaceCount = 1) => {
   const iter = (currentText, depth) => {
     if (!_.isObject(currentText)) {
       return `${currentText}`;
@@ -9,14 +10,7 @@ const formatText = (text, replacer = ' ', spaceCount = 1) => {
     const currentIndent = replacer.repeat(indentSize);
     const bracketsIndent = replacer.repeat(indentSize - spaceCount);
     const keysValue = Object.entries(currentText);
-    const sorted = _.sortBy(keysValue, ([val]) => {
-      if (val.split(' ').length > 1) {
-        const [, key] = val.split(' ');
-        return key;
-      }
-      return val;
-    });
-    const lines = sorted
+    const lines = sort(keysValue)
       .map(([key, value]) => `${currentIndent}${key}: ${iter(value, depth + 1)}`);
     return [
       '{',
@@ -24,6 +18,6 @@ const formatText = (text, replacer = ' ', spaceCount = 1) => {
       `${bracketsIndent}}`,
     ].join('\n');
   };
-  return iter(text, 1);
+  return iter(data, 1).replaceAll('--', '-').replaceAll('++', '+');
 };
-export default formatText;
+export default formatterStylish;
