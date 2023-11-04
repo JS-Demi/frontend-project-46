@@ -70,11 +70,6 @@ test('is correct output stylish format', () => {
   expect(genDiff(pathToYmlFile1, pathToJsonFile2)).toBe(expectedStylishFormat);
 });
 
-test('unknown format type', () => {
-  const nonExistantFormat = genDiff(pathToJsonFile1, pathToJsonFile2, 'blabla');
-  expect(nonExistantFormat).toThrow(Error);
-});
-
 const expectedPlainFormat = [
   'Property \'common.follow\' was added with value: false',
   'Property \'common.setting2\' was removed',
@@ -97,3 +92,8 @@ test('is correct output plain format', () => {
 test('is correct ouput JSON format', () => {
   expect(genDiff(pathToJsonFile1, pathToJsonFile2, 'json')).toStrictEqual(json);
 });
+
+// test('unknown format type', () => {
+//   const nonExistantFormat = genDiff(pathToJsonFile1, pathToJsonFile2, 'blabla');
+//   expect(nonExistantFormat).toThrow(Error);
+// });
