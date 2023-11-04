@@ -10,26 +10,22 @@ const formatterPlain = (data) => {
         if (key.split(' ').slice(0, 2).length < 2 && _.isObject(value)) {
           return iter(value);
         }
-        let currentValue;
+        const isNested = (currentValue) => {
+          if (!_.isObject(currentValue)) {
+            return _.isString(currentValue) ? `'${currentValue}'` : currentValue;
+          }
+          return '[complex value]';
+        };
         if (key.startsWith('--')) {
-          if (!_.isObject(value)) {
-            currentValue = _.isString(value) ? `'${value}'` : value;
-          } else currentValue = '[complex value]';
-          const updOutput = `Property ${findPath(data, key, value)} was updated. From ${currentValue} `;
+          const updOutput = `Property ${findPath(data, key, value)} was updated. From ${isNested(value)} `;
           result.push(updOutput);
         }
         if (key.startsWith('++')) {
-          if (!_.isObject(value)) {
-            currentValue = _.isString(value) ? `'${value}'` : value;
-          } else currentValue = '[complex value]';
-          const newValue = result.pop().concat(`to ${currentValue}`);
+          const newValue = result.pop().concat(`to ${isNested(value)}`);
           result.push(newValue);
         }
         if (key.split(' ')[0] === '+') {
-          if (_.isObject(value) && value !== null) {
-            currentValue = '[complex value]';
-          } else currentValue = _.isString(value) ? `'${value}'` : value;
-          const addOutput = `Property ${findPath(data, key, value)} was added with value: ${currentValue}`;
+          const addOutput = `Property ${findPath(data, key, value)} was added with value: ${isNested(value)}`;
           result.push(addOutput);
         }
         if (key.split(' ')[0] === '-') {
