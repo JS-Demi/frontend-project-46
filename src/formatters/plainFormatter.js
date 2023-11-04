@@ -16,23 +16,22 @@ const formatterPlain = (data) => {
           }
           return '[complex value]';
         };
-        if (key.startsWith('--')) {
-          const updOutput = `Property ${findPath(data, key, value)} was updated. From ${isNested(value)} `;
-          result.push(updOutput);
+        switch (key.split(' ')[0]) {
+          case '--':
+            result.push(`Property ${findPath(data, key, value)} was updated. From ${isNested(value)} `);
+            break;
+          case '++':
+            result.push(result.pop().concat(`to ${isNested(value)}`));
+            break;
+          case '+':
+            result.push(`Property ${findPath(data, key, value)} was added with value: ${isNested(value)}`);
+            break;
+          case '-':
+            result.push(`Property ${findPath(data, key, value)} was removed`);
+            break;
+          default:
+            break;
         }
-        if (key.startsWith('++')) {
-          const newValue = result.pop().concat(`to ${isNested(value)}`);
-          result.push(newValue);
-        }
-        if (key.split(' ')[0] === '+') {
-          const addOutput = `Property ${findPath(data, key, value)} was added with value: ${isNested(value)}`;
-          result.push(addOutput);
-        }
-        if (key.split(' ')[0] === '-') {
-          const delOutput = `Property ${findPath(data, key, value)} was removed`;
-          result.push(delOutput);
-        }
-
         return result;
       });
     return clean(result.join('\n'));
