@@ -10,10 +10,9 @@ The difference calculator for [node.js](http://nodejs.org).
   - [Formats](#formats)
   - [Examples](#examples)
     - [Stylish](#simple-node-data-files-with-default-formattee-stylish)
-    - [Stylish](#nested-data-with-default-formatter-stylish)
     - [Plain](#nested-data-with-formatter-plain)
     - [Json](#nested-data-with-formatter-json)
-    
+
 ## Installation
 
 ```sh
@@ -28,7 +27,7 @@ then return the differences in the specified format.
 If you don't specify a format gendiff will use the default 'stylish' format.
 Gendiff works with JSON and YML file formats.
 
-Examples: [Examples](#examples)
+[Examples](#examples)
 
 ```js
 import genDiff from '@hexlet/code';
@@ -36,15 +35,15 @@ import genDiff from '@hexlet/code';
 console.log(genDiff(filepath1, filepath2));
 ```
 ## Formats
-- [Stylish(default)](#nested-data-with-default-formatter-stylish)
+- [Stylish(default)](#simple-node-data-files-with-default-formatter-stylish)
 - [Plain](#nested-data-with-formatter-plain)
 - [Json](#nested-data-with-formatter-json)
 
 ## Examples 
 
-[![asciicast](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW.svg)](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW)
+### Simple node data files with default formatter 'stylish'
 
-### Simple node data files with default formattee 'stylish'
+[![asciicast](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW.svg)](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW)
 
 [![asciicast](https://asciinema.org/a/qQpMXbekdnSD9nugQY2hGFeti.svg)](https://asciinema.org/a/qQpMXbekdnSD9nugQY2hGFeti)
 
