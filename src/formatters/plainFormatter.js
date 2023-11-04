@@ -2,6 +2,13 @@ import _ from 'lodash';
 import clean from '../utilites/cleanOutput.js';
 import findPath from '../utilites/findPath.js';
 
+const isNested = (currentValue) => {
+  if (!_.isObject(currentValue)) {
+    return _.isString(currentValue) ? `'${currentValue}'` : currentValue;
+  }
+  return '[complex value]';
+};
+
 const formatterPlain = (data) => {
   const result = [];
   const iter = (node) => {
@@ -10,12 +17,6 @@ const formatterPlain = (data) => {
         if (key.split(' ').slice(0, 2).length < 2 && _.isObject(value)) {
           return iter(value);
         }
-        const isNested = (currentValue) => {
-          if (!_.isObject(currentValue)) {
-            return _.isString(currentValue) ? `'${currentValue}'` : currentValue;
-          }
-          return '[complex value]';
-        };
         switch (key.split(' ')[0]) {
           case '--':
             result.push(`Property ${findPath(data, key, value)} was updated. From ${isNested(value)} `);
