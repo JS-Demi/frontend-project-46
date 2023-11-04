@@ -1,12 +1,11 @@
 import _ from 'lodash';
-import sort from '../utilites/sort.js';
 import clean from '../utilites/cleanOutput.js';
 import findPath from '../utilites/findPath.js';
 
 const formatterPlain = (data) => {
   const result = [];
   const iter = (node) => {
-    sort(Object.entries(node))
+    Object.entries(node)
       .map(([key, value]) => {
         if (key.split(' ').slice(0, 2).length < 2 && _.isObject(value)) {
           return iter(value);
