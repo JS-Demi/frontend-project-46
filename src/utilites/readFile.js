@@ -1,5 +1,5 @@
 import fs from 'fs';
-import getFixturesPath from './getFixturesPath.js';
+import getFixturesPath from '../getFixturesPath.js';
 
 const readFile = (file) => {
   const filepath = getFixturesPath(file);
