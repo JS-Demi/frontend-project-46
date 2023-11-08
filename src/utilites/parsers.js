@@ -1,21 +1,18 @@
 import yaml from 'js-yaml';
 import path from 'path';
 
-export const jsonParse = (file) => JSON.parse(file);
-const yamlParse = (file) => yaml.load(file);
-
 const parse = (fileName, file) => {
   const format = path.extname(fileName);
-  if (format === '.json') {
-    return jsonParse(file);
+  switch (format) {
+    case '.json':
+      return JSON.parse(file);
+    case '.yml':
+      return yaml.load(file);
+    case '.yaml':
+      return yaml.load(file);
+    default:
+      throw new Error(`Unknow type! Type ${format} is not supported!`);
   }
-  if (format === '.yml') {
-    return yamlParse(file);
-  }
-  if (format === '.yaml') {
-    return yamlParse(file);
-  }
-  return file;
 };
 
 export default parse;
