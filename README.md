@@ -2,59 +2,57 @@
 
 [![Actions Status](https://github.com/JS-Demi/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/JS-Demi/frontend-project-46/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/cda8be9562e74d9b050b/maintainability)](https://codeclimate.com/github/JS-Demi/frontend-project-46/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/cda8be9562e74d9b050b/test_coverage)](https://codeclimate.com/github/JS-Demi/frontend-project-46/test_coverage)
 
-The difference calculator for [node.js](http://nodejs.org).
+Вычислитель отличий для [node.js](http://nodejs.org).
 
 - [genDiff.js](#genDiffjs)
-  - [Installation](#installation)
-  - [Quick Start](#quick-start)
-  - [Formats](#formats)
-  - [Examples](#examples)
-    - [Stylish](#simple-node-data-files-with-default-formattee-stylish)
-    - [Plain](#nested-data-with-formatter-plain)
-    - [Json](#nested-data-with-formatter-json)
+  - [Установка](#установка)
+  - [Быстрый старт](#быстрый-старт)
+  - [Форматы](#форматы)
+  - [Примеры](#примеры)
+    - [Stylish](#примеры-работы-функции-с-плоскими-файлами-с-использованием-форматера-по-умолчанию-stylish)
+    - [Plain](#файлы-с-вложенными-даннымиформатер-plain)
+    - [Json](#файлы-с-вложенными-даннымиформатер-json)
 
-## Installation
+## Установка
 
 ```sh
 npm install @hexlet/code
 ```
 
-## Quick Start
+## Быстрый старт
+Добавьте ваши файлы в папку __fixtures__.
+Запустите gendiff с флагом -f или --format желаемого формата и именами ваших файлов.
+gendiff прочитает файлы, вычислит отличия в данных, затем выведет данные в указанном формате.
+Если при вызове команды не будет указан формат, будет использоваться формат по умолчанию 'stylish'.
+Функция поддерживает JSON и YML форматы файлов.
 
-Run genDiff with the paths to the two files and desired format.
-Gendiff reads the files and calculates the differences in the data,
-then return the differences in the specified format.
-If you don't specify a format gendiff will use the default 'stylish' format.
-Gendiff works with JSON and YML file formats.
-
-[Examples](#examples)
+[Примеры](#примеры)
 
 ```js
 import genDiff from '@hexlet/code';
 
-console.log(genDiff(filepath1, filepath2));
+console.log(genDiff(file1, file2));
 ```
-## Formats
-- [Stylish(default)](#simple-node-data-files-with-default-formatter-stylish)
-- [Plain](#nested-data-with-formatter-plain)
-- [Json](#nested-data-with-formatter-json)
+## Форматы
+- [Stylish(default)](#файлы-с-вложенными-даннымиформатер-по-умолчанию-stylish)
+- [Plain](#файлы-с-вложенными-даннымиформатер-plain)
+- [Json](#файлы-с-вложенными-даннымиформатер-json)
 
-## Examples 
+## Примеры 
 
-### Simple node data files with default formatter 'stylish'
-
+### Примеры работы функции с плоскими файлами с использованием форматера по умолчанию 'stylish'
 [![asciicast](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW.svg)](https://asciinema.org/a/9vHf9f2gOA0C4h0t08lWUPrRW)
 
 [![asciicast](https://asciinema.org/a/qQpMXbekdnSD9nugQY2hGFeti.svg)](https://asciinema.org/a/qQpMXbekdnSD9nugQY2hGFeti)
 
-### Nested data with default formatter 'stylish'
+### Файлы с вложенными данными(форматер по умолчанию 'stylish')
 
-[![asciicast](https://asciinema.org/a/0V1fyvWR7lDX3wiLbrujg5jIu.svg)](https://asciinema.org/a/0V1fyvWR7lDX3wiLbrujg5jIu)
+[![asciicast](https://asciinema.org/a/xNxUVUvN8v1BoiF2VrNHqo4HP.svg)](https://asciinema.org/a/xNxUVUvN8v1BoiF2VrNHqo4HP)
 
-### Nested data with formatter 'plain'
+### Файлы с вложенными данными(форматер 'plain')
 
-[![asciicast](https://asciinema.org/a/3ALpKXyeAWr7XSNSppxfOyu02.svg)](https://asciinema.org/a/3ALpKXyeAWr7XSNSppxfOyu02)
+[![asciicast](https://asciinema.org/a/tHdyhKP7qWXYhlCVNvBoSLedn.svg)](https://asciinema.org/a/tHdyhKP7qWXYhlCVNvBoSLedn)
 
-### Nested data with formatter 'json':
+### Файлы с вложенными данными(форматер 'json')
 
-[![asciicast](https://asciinema.org/a/uJ7fOGqk77f6GnLygSsEIORFJ.svg)](https://asciinema.org/a/uJ7fOGqk77f6GnLygSsEIORFJ)
+[![asciicast](https://asciinema.org/a/eXkSoliFj7KL0noecJzuzjhPj.svg)](https://asciinema.org/a/eXkSoliFj7KL0noecJzuzjhPj)
