@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 
 describe('Test all project', () => {
   test('Correct path to fixtures', () => {
-    const pathToFixtures = path.join(__dirname, '..', '__fixtures__', 'new.json');
+    const pathToFixtures = path.resolve(__dirname, '..', '__fixtures__', 'new.json');
     expect(getFixturesPath('new.json')).toBe(pathToFixtures);
   });
 
