@@ -11,7 +11,7 @@
     "url": "git+ssh://git@github.com/JS-Demi/frontend-project-46.git"
   },
   "bin": {
-    "gendiff": "bin/jsonDiffProgram.js"
+    "gendiff": "bin/genDiffProgram.js"
   },
   "author": "Miracle",
   "license": "ISC",
