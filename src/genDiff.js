@@ -4,7 +4,7 @@ import parse from './utilites/parsers.js';
 import readFile from './utilites/readFile.js';
 import selectedFormat from './formatters/index.js';
 
-function diff(oldObj, newObj) {
+function makeTree(oldObj, newObj) {
   const keys = _.sortBy(Object.keys({ ...oldObj, ...newObj }), (key) => key);
   const tree = keys.map((key) => {
     const oldValue = oldObj[key];
@@ -20,7 +20,7 @@ function diff(oldObj, newObj) {
         return { key, type: 'unchanged', value: oldValue };
       }
       if (_.isObject(oldValue) && _.isObject(newValue)) {
-        return { key, type: 'nested', children: diff(oldValue, newValue) };
+        return { key, type: 'nested', children: makeTree(oldValue, newValue) };
       }
     }
     const updated = {
@@ -36,7 +36,7 @@ function genDiff(file1, file2, format = 'stylish') {
   const contentFile2 = readFile(file2);
   const parsedFile1 = parse(file1, contentFile1);
   const parsedFile2 = parse(file2, contentFile2);
-  const differenceTree = diff(parsedFile1, parsedFile2);
+  const differenceTree = makeTree(parsedFile1, parsedFile2);
   const result = selectedFormat(differenceTree, format);
   return result;
 }
