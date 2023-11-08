@@ -23,10 +23,9 @@ function makeTree(oldObj, newObj) {
         return { key, type: 'nested', children: makeTree(oldValue, newValue) };
       }
     }
-    const updated = {
+    return {
       key, type: 'updated', oldValue, newValue,
     };
-    return updated;
   });
   return tree;
 }
