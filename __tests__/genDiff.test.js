@@ -2,7 +2,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import genDiff from '../index.js';
-import getFixturesPath from '../src/getFixturesPath.js';
+import getFixturesPath from '../src/utilites/getFixturesPath.js';
 import readFile from '../src/utilites/readFile.js';
 import parse from '../src/utilites/parsers.js';
 import buildPlainFormat from '../src/formatters/plain.js';
