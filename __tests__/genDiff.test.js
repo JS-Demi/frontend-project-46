@@ -11,42 +11,56 @@ import buildStylishFormat from '../src/formatters/stylish.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-describe('Test all project', () => {
-  test('Correct path to fixtures', () => {
-    const pathToFixtures = path.resolve(__dirname, '..', '__fixtures__', 'new.json');
-    expect(getFixturesPath('new.json')).toBe(pathToFixtures);
+const pathToFixtures = path.resolve(__dirname, '..', '__fixtures__', 'new.json');
+const expectedStylishFormat = readFile('expectedStylish.diff');
+const expectedPlainFormat = readFile('expectedPlain.diff');
+const expectedJsonFormat = readFile('expectedJson.diff');
+const errorTree = [{ key: 10, type: undefined }];
+
+describe('Tests genDiff project', () => {
+  describe('test main efficiency of project', () => {
+    test('Correct path to fixtures', () => {
+      expect(getFixturesPath('new.json')).toBe(pathToFixtures);
+    });
+
+    test.each([
+      {
+        format: 'stylish',
+        expected: expectedStylishFormat,
+      },
+      {
+        format: 'plain',
+        expected: expectedPlainFormat,
+      },
+      {
+        format: 'json',
+        expected: expectedJsonFormat,
+      },
+    ])('Is the output correct with $format format', ({ format, expected }) => {
+      expect(genDiff('old.json', 'new.yml', format)).toEqual(expected);
+      expect(genDiff('old.yaml', 'new.json', format)).toEqual(expected);
+    });
   });
 
-  test('Is the output correct to stylish format', () => {
-    const expectedStylishFormat = readFile('expectedStylish.diff');
-    expect(genDiff('old.json', 'new.yml')).toEqual(expectedStylishFormat);
-    expect(genDiff('old.yaml', 'new.json')).toEqual(expectedStylishFormat);
-  });
+  describe('Should throw Error', () => {
+    test('boom! Should be Error in buildFormats', () => {
+      expect(() => {
+        buildPlainFormat(errorTree);
+      }).toThrow();
+      expect(() => {
+        buildStylishFormat(errorTree);
+      }).toThrow();
+    });
 
-  test('Is the output correct to plain format', () => {
-    const expectedPlainFormat = readFile('expectedPlain.diff');
-    expect(genDiff('old.json', 'new.yml', 'plain')).toEqual(expectedPlainFormat);
-    expect(genDiff('old.yaml', 'new.json', 'plain')).toEqual(expectedPlainFormat);
-  });
-
-  test('Is the output correct to JSON format', () => {
-    const expectedJsonFormat = readFile('expectedJson.diff');
-    expect(genDiff('old.json', 'new.yml', 'json')).toEqual(expectedJsonFormat);
-  });
-
-  test('boom! Error! Error! Error!', () => {
-    expect(() => {
-      genDiff('old.json', 'new.json', 'blah blah');
-    }).toThrow();
-    expect(() => {
-      parse('old', 'old');
-    }).toThrow();
-    const errorTree = [{ key: 10, type: undefined }];
-    expect(() => {
-      buildPlainFormat(errorTree);
-    }).toThrow();
-    expect(() => {
-      buildStylishFormat(errorTree);
-    }).toThrow();
+    test('boom! Should be Error in parse', () => {
+      expect(() => {
+        parse('old', 'new');
+      }).toThrow();
+    });
+    test('boom! Should be Error in gendiff', () => {
+      expect(() => {
+        genDiff('old.json', 'new.json', 'yml');
+      }).toThrow();
+    });
   });
 });
